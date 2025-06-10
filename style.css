@@ -1,0 +1,180 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: white;
+}
+
+body {
+  background: #181028;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  color: #fff;
+  min-width: 320px;
+  max-width: 450px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+header {
+  background: linear-gradient(90deg, #f077f0, #ca00f3);
+  padding: 24px 0 16px 0;
+  border-bottom-left-radius: 35px;
+  border-bottom-right-radius: 35px;
+  text-align: center;
+  box-shadow: 0 2px 12px rgba(202,0,243,0.15);
+}
+
+.main-title {
+  font-size: 2rem;
+  letter-spacing: 2px;
+  margin: 0;
+}
+
+#bg-section {
+  width: 100%;
+  height: 100vh;
+  background-color: black;
+  overflow-x: hidden;
+}
+
+@keyframes gradiente {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 100% 0%;
+  }
+}
+
+.title {
+  max-height: 10px;
+  z-index: 1;
+}
+
+.cards {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 24px 12px;
+}
+
+.card {
+  background: #22123a;
+  border-radius: 20px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  transition: box-shadow 0.3s, transform 0.2s;
+  width: 100%;
+  max-width: 420px;
+  margin: 0 auto;
+  min-height: 420px; /* aumente a altura mínima do card */
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.5s, transform 0.5s;
+}
+
+.card:hover, .card.ativo {
+  box-shadow: 0 8px 24px rgba(202,0,243,0.25);
+  transform: translateY(-2px) scale(1.01);
+}
+
+.card-img {
+  width: 100%;
+  height: 420px; /* aumente a altura da área da imagem */
+  position: relative;
+}
+
+.card-img img {
+  width: 100%;
+  height: 420px; /* aumente a altura da imagem */
+  object-fit: cover;
+  border-radius: 20px;
+  display: block;
+  transition: filter 0.3s;
+}
+
+.card .overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.45);
+  opacity: 0;
+  border-radius: 20px;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+
+.card .card-text {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  font-size: 20px;
+  width: 350px;
+  opacity: 0;
+  background: rgba(32,0,40,0.85);
+  border-radius: 16px;
+  padding: 18px 16px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(202,0,243,0.10);
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+
+.card.ativo .overlay,
+.card.ativo .card-text {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.card.ativo img {
+  filter: brightness(0.7) blur(1px);
+}
+
+.card.animar-direita {
+  animation: aparecer-direita 0.7s cubic-bezier(.4,1.7,.7,1) forwards;
+}
+.card.animar-esquerda {
+  animation: aparecer-esquerda 0.7s cubic-bezier(.4,1.7,.7,1) forwards;
+}
+.card.animar-crescendo {
+  animation: aparecer-crescendo 0.7s cubic-bezier(.4,1.7,.7,1) forwards;
+}
+
+.card,
+.card:focus,
+.card:active {
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+footer {
+  text-align: center;
+  padding: 18px 0 10px 0;
+  font-size: 1rem;
+  color: #f077f0;
+  background: transparent;
+}
+
+.purple {
+  color: #520052;
+}
+
+.blue {
+  color: #2900f3;
+}
+
+/* Animações */
+@keyframes aparecer-direita {
+  from { opacity: 0; transform: translateX(60px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes aparecer-esquerda {
+  from { opacity: 0; transform: translateX(-60px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes aparecer-crescendo {
+  from { opacity: 0; transform: scale(0.8); }
+  to   { opacity: 1; transform: scale(1); }
+}
